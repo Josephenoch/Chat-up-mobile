@@ -1,11 +1,12 @@
 import { StyleSheet, Text, View } from 'react-native';
+import ChatScreen from './src/screens/ChatScreen';
 import ChatsScreen from './src/screens/ChatsScreen';
 
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <ChatsScreen/>
+      <ChatScreen/>
     </View>
   );
 }
