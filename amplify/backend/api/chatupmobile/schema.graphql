@@ -1,0 +1,29 @@
+# This "input" configures a global authorization rule to enable public access to
+# all models in this schema. Learn more about authorization rules here: https://docs.amplify.aws/cli/graphql/authorization-rules
+input AMPLIFY { globalAuthRule: AuthRule = { allow: public } } # FOR TESTING ONLY!
+
+type User @model {
+  id: ID!
+  name: String!
+  status: String
+  imageURL: String
+  isOnline: Boolean
+  messages: [Message] @hasMany(indexName: "byUser", fields:["id"])
+  chatRooms: [ChatRoom] @manyToMany(relationName: "ChatRoomUser")
+}
+
+type Message @model {
+  id: ID!
+  text: String!
+  chatRoomID: ID! @index(name: "byChatRoom", sortKeyFields: ["text"])
+  chatRoom: ChatRoom! @belongsTo(fields: ["chatRoomID"])
+  senderID: ID! @index(name: "byUser", sortKeyFields: ["text"])
+  sender: ChatRoom! @belongsTo(fields: ["senderID"])
+}
+
+type ChatRoom @model {
+  id: ID!
+  messages: [Message] @hasMany(indexName: "byChatRoom", fields:["id"])
+  members: [User] @manyToMany(relationName: "ChatRoomUser")
+  lastMessage: Message @hasOne
+}
