@@ -1,13 +1,16 @@
 import { StyleSheet, Text, View, TextInput } from 'react-native'
 import {AntDesign, MaterialIcons} from "@expo/vector-icons"
 import { useState } from 'react'
+import { SafeAreaView } from 'react-native-safe-area-context'
 const InputBox = () => {
   const [message, setMessage] = useState("")
   const handleSend = () =>{
     if(message) console.warn("Sending new message", message)
   }
   return (
-    <View style={styles.rootContainer}>
+    <SafeAreaView
+        edges={['bottom']}
+        style={styles.rootContainer}>
         <AntDesign 
             name="plus" 
             size={20} 
@@ -26,7 +29,7 @@ const InputBox = () => {
             style={styles.send}
             onPress={handleSend}
         />
-    </View>
+    </SafeAreaView>
   )
 }
 

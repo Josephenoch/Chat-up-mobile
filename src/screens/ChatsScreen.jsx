@@ -6,7 +6,9 @@ export default function ChatsScreen() {
       <FlatList
         data={ChatDummyData}
         renderItem={({item})=> <ChatListItem chat={item}/>}
-        
+        style={{
+          backgroundColor: "white"
+        }}
       />
   )
 }

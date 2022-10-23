@@ -1,14 +1,20 @@
-import { View, Text, Image, StyleSheet } from 'react-native'
+import { View, Text, Image, StyleSheet, Pressable } from 'react-native'
 import React from 'react'
 import dayjs from 'dayjs'
 import relativeTime from "dayjs/plugin/relativeTime"
-
+import {useNavigation} from "@react-navigation/native"
 dayjs.extend(relativeTime)
+
+
 const ChatListItem = ({
   chat
 }) => {
+  const navigation = useNavigation()
   return (
-    <View style={styles.rootContainer}>
+    <Pressable
+      style={styles.rootContainer}
+      onPress={()=>navigation.navigate("Chat", {id: chat.user.id, name: chat.user.name})}
+    >
       <Image source={{
         uri: chat?.user?.image,
         }}
@@ -21,7 +27,7 @@ const ChatListItem = ({
         </View>
         <Text numberOfLines={2} style={styles.subtitle}>{chat?.lastMessage?.text}</Text>
       </View>
-    </View>
+    </Pressable>
   )
 }
 
