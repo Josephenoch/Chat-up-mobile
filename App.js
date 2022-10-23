@@ -1,9 +1,9 @@
 import { StyleSheet, Text, View } from 'react-native';
 import Navigator from './src/navigation';
-import {  Amplify } from 'aws-amplify';
+import {  Amplify} from 'aws-amplify';
 import awsmobile from "./src/aws-exports"
 import { withAuthenticator } from 'aws-amplify-react-native/dist/Auth';
-Amplify.configure(awsmobile)
+Amplify.configure({...awsmobile, Analytics:{disabled: true}})
 const App = () => {
   return ( 
     <View style={styles.container}>
