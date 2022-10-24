@@ -1,19 +1,19 @@
 {
   "dev": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-chatupmobile-dev-131132-authRole",
-      "UnauthRoleArn": "arn:aws:iam::151995015007:role/amplify-chatupmobile-dev-131132-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::151995015007:role/amplify-chatupmobile-dev-131132-authRole",
+      "AuthRoleName": "amplify-chatupmobile-dev-152751-authRole",
+      "UnauthRoleArn": "arn:aws:iam::151995015007:role/amplify-chatupmobile-dev-152751-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::151995015007:role/amplify-chatupmobile-dev-152751-authRole",
       "Region": "eu-central-1",
-      "DeploymentBucketName": "amplify-chatupmobile-dev-131132-deployment",
-      "UnauthRoleName": "amplify-chatupmobile-dev-131132-unauthRole",
-      "StackName": "amplify-chatupmobile-dev-131132",
-      "StackId": "arn:aws:cloudformation:eu-central-1:151995015007:stack/amplify-chatupmobile-dev-131132/d77214d0-52cb-11ed-bae9-060f0b36dfb8",
-      "AmplifyAppId": "d19voerwmkw5ja"
+      "DeploymentBucketName": "amplify-chatupmobile-dev-152751-deployment",
+      "UnauthRoleName": "amplify-chatupmobile-dev-152751-unauthRole",
+      "StackName": "amplify-chatupmobile-dev-152751",
+      "StackId": "arn:aws:cloudformation:eu-central-1:151995015007:stack/amplify-chatupmobile-dev-152751/0d4329f0-53a8-11ed-a3d3-0ac571183c98",
+      "AmplifyAppId": "d2dlym2700z4lq"
     },
     "categories": {
       "auth": {
-        "chatupmobile23232e35": {}
+        "chatupmobile27b8e9b5": {}
       }
     }
   }

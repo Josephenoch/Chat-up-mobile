@@ -2,8 +2,8 @@
 // this is an auto generated file. This will be overwritten
 
 export const onCreateUser = /* GraphQL */ `
-  subscription OnCreateUser($filter: ModelSubscriptionUserFilterInput) {
-    onCreateUser(filter: $filter) {
+  subscription OnCreateUser {
+    onCreateUser {
       id
       name
       status
@@ -36,8 +36,8 @@ export const onCreateUser = /* GraphQL */ `
   }
 `;
 export const onUpdateUser = /* GraphQL */ `
-  subscription OnUpdateUser($filter: ModelSubscriptionUserFilterInput) {
-    onUpdateUser(filter: $filter) {
+  subscription OnUpdateUser {
+    onUpdateUser {
       id
       name
       status
@@ -70,8 +70,8 @@ export const onUpdateUser = /* GraphQL */ `
   }
 `;
 export const onDeleteUser = /* GraphQL */ `
-  subscription OnDeleteUser($filter: ModelSubscriptionUserFilterInput) {
-    onDeleteUser(filter: $filter) {
+  subscription OnDeleteUser {
+    onDeleteUser {
       id
       name
       status
@@ -104,8 +104,8 @@ export const onDeleteUser = /* GraphQL */ `
   }
 `;
 export const onCreateMessage = /* GraphQL */ `
-  subscription OnCreateMessage($filter: ModelSubscriptionMessageFilterInput) {
-    onCreateMessage(filter: $filter) {
+  subscription OnCreateMessage {
+    onCreateMessage {
       id
       text
       chatRoomID
@@ -156,8 +156,8 @@ export const onCreateMessage = /* GraphQL */ `
   }
 `;
 export const onUpdateMessage = /* GraphQL */ `
-  subscription OnUpdateMessage($filter: ModelSubscriptionMessageFilterInput) {
-    onUpdateMessage(filter: $filter) {
+  subscription OnUpdateMessage {
+    onUpdateMessage {
       id
       text
       chatRoomID
@@ -208,8 +208,8 @@ export const onUpdateMessage = /* GraphQL */ `
   }
 `;
 export const onDeleteMessage = /* GraphQL */ `
-  subscription OnDeleteMessage($filter: ModelSubscriptionMessageFilterInput) {
-    onDeleteMessage(filter: $filter) {
+  subscription OnDeleteMessage {
+    onDeleteMessage {
       id
       text
       chatRoomID
@@ -260,8 +260,8 @@ export const onDeleteMessage = /* GraphQL */ `
   }
 `;
 export const onCreateChatRoom = /* GraphQL */ `
-  subscription OnCreateChatRoom($filter: ModelSubscriptionChatRoomFilterInput) {
-    onCreateChatRoom(filter: $filter) {
+  subscription OnCreateChatRoom {
+    onCreateChatRoom {
       id
       messages {
         items {
@@ -311,8 +311,8 @@ export const onCreateChatRoom = /* GraphQL */ `
   }
 `;
 export const onUpdateChatRoom = /* GraphQL */ `
-  subscription OnUpdateChatRoom($filter: ModelSubscriptionChatRoomFilterInput) {
-    onUpdateChatRoom(filter: $filter) {
+  subscription OnUpdateChatRoom {
+    onUpdateChatRoom {
       id
       messages {
         items {
@@ -362,8 +362,8 @@ export const onUpdateChatRoom = /* GraphQL */ `
   }
 `;
 export const onDeleteChatRoom = /* GraphQL */ `
-  subscription OnDeleteChatRoom($filter: ModelSubscriptionChatRoomFilterInput) {
-    onDeleteChatRoom(filter: $filter) {
+  subscription OnDeleteChatRoom {
+    onDeleteChatRoom {
       id
       messages {
         items {
@@ -413,10 +413,8 @@ export const onDeleteChatRoom = /* GraphQL */ `
   }
 `;
 export const onCreateChatRoomUser = /* GraphQL */ `
-  subscription OnCreateChatRoomUser(
-    $filter: ModelSubscriptionChatRoomUserFilterInput
-  ) {
-    onCreateChatRoomUser(filter: $filter) {
+  subscription OnCreateChatRoomUser {
+    onCreateChatRoomUser {
       id
       userID
       chatRoomID
@@ -461,10 +459,8 @@ export const onCreateChatRoomUser = /* GraphQL */ `
   }
 `;
 export const onUpdateChatRoomUser = /* GraphQL */ `
-  subscription OnUpdateChatRoomUser(
-    $filter: ModelSubscriptionChatRoomUserFilterInput
-  ) {
-    onUpdateChatRoomUser(filter: $filter) {
+  subscription OnUpdateChatRoomUser {
+    onUpdateChatRoomUser {
       id
       userID
       chatRoomID
@@ -509,10 +505,8 @@ export const onUpdateChatRoomUser = /* GraphQL */ `
   }
 `;
 export const onDeleteChatRoomUser = /* GraphQL */ `
-  subscription OnDeleteChatRoomUser(
-    $filter: ModelSubscriptionChatRoomUserFilterInput
-  ) {
-    onDeleteChatRoomUser(filter: $filter) {
+  subscription OnDeleteChatRoomUser {
+    onDeleteChatRoomUser {
       id
       userID
       chatRoomID
