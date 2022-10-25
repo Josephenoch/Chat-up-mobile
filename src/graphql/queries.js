@@ -90,23 +90,18 @@ export const getMessage = /* GraphQL */ `
       senderID
       sender {
         id
+        name
+        status
+        imageURL
+        isOnline
         messages {
           nextToken
         }
-        members {
+        chatRooms {
           nextToken
-        }
-        lastMessage {
-          id
-          text
-          chatRoomID
-          senderID
-          createdAt
-          updatedAt
         }
         createdAt
         updatedAt
-        chatRoomLastMessageId
       }
       createdAt
       updatedAt
@@ -133,9 +128,12 @@ export const listMessages = /* GraphQL */ `
         senderID
         sender {
           id
+          name
+          status
+          imageURL
+          isOnline
           createdAt
           updatedAt
-          chatRoomLastMessageId
         }
         createdAt
         updatedAt
@@ -182,9 +180,12 @@ export const getChatRoom = /* GraphQL */ `
         senderID
         sender {
           id
+          name
+          status
+          imageURL
+          isOnline
           createdAt
           updatedAt
-          chatRoomLastMessageId
         }
         createdAt
         updatedAt

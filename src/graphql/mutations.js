@@ -144,23 +144,18 @@ export const createMessage = /* GraphQL */ `
       senderID
       sender {
         id
+        name
+        status
+        imageURL
+        isOnline
         messages {
           nextToken
         }
-        members {
+        chatRooms {
           nextToken
-        }
-        lastMessage {
-          id
-          text
-          chatRoomID
-          senderID
-          createdAt
-          updatedAt
         }
         createdAt
         updatedAt
-        chatRoomLastMessageId
       }
       createdAt
       updatedAt
@@ -199,23 +194,18 @@ export const updateMessage = /* GraphQL */ `
       senderID
       sender {
         id
+        name
+        status
+        imageURL
+        isOnline
         messages {
           nextToken
         }
-        members {
+        chatRooms {
           nextToken
-        }
-        lastMessage {
-          id
-          text
-          chatRoomID
-          senderID
-          createdAt
-          updatedAt
         }
         createdAt
         updatedAt
-        chatRoomLastMessageId
       }
       createdAt
       updatedAt
@@ -254,23 +244,18 @@ export const deleteMessage = /* GraphQL */ `
       senderID
       sender {
         id
+        name
+        status
+        imageURL
+        isOnline
         messages {
           nextToken
         }
-        members {
+        chatRooms {
           nextToken
-        }
-        lastMessage {
-          id
-          text
-          chatRoomID
-          senderID
-          createdAt
-          updatedAt
         }
         createdAt
         updatedAt
-        chatRoomLastMessageId
       }
       createdAt
       updatedAt
@@ -318,9 +303,12 @@ export const createChatRoom = /* GraphQL */ `
         senderID
         sender {
           id
+          name
+          status
+          imageURL
+          isOnline
           createdAt
           updatedAt
-          chatRoomLastMessageId
         }
         createdAt
         updatedAt
@@ -372,9 +360,12 @@ export const updateChatRoom = /* GraphQL */ `
         senderID
         sender {
           id
+          name
+          status
+          imageURL
+          isOnline
           createdAt
           updatedAt
-          chatRoomLastMessageId
         }
         createdAt
         updatedAt
@@ -426,9 +417,12 @@ export const deleteChatRoom = /* GraphQL */ `
         senderID
         sender {
           id
+          name
+          status
+          imageURL
+          isOnline
           createdAt
           updatedAt
-          chatRoomLastMessageId
         }
         createdAt
         updatedAt

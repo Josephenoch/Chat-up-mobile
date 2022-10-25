@@ -2,11 +2,25 @@ import { StyleSheet, Text, View, TextInput } from 'react-native'
 import {AntDesign, MaterialIcons} from "@expo/vector-icons"
 import { useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
-const InputBox = () => {
+import { API, Auth, graphqlOperation } from 'aws-amplify'
+import { createMessage } from '../../graphql/mutations'
+import { useNavigation } from '@react-navigation/native'
+const InputBox = ({roomID}) => {
   const [message, setMessage] = useState("")
-  const handleSend = () =>{
-    if(message) console.warn("Sending new message", message)
-  }
+  const navigation = useNavigation()
+  const handleSend = async () =>{
+    const currentUser = await Auth.currentAuthenticatedUser()
+    if(message){
+        await API.graphql(graphqlOperation(createMessage,{
+            input:{
+                text: message,
+                chatRoomID: roomID,
+                senderID:  currentUser.attributes.sub
+            }
+        }))
+        setMessage("")
+    }
+}
   return (
     <SafeAreaView
         edges={['bottom']}

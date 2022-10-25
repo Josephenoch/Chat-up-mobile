@@ -5,7 +5,7 @@ export const getUsersRoom = async (contactID) =>{
     const response = await API.graphql(graphqlOperation(myChatRooms, {
         id: currentUser?.attributes?.sub
     }))
-    const chatRooms = response?.data?.getUser?.chatRooms?.items
+    const chatRooms = response?.data?.getUser?.chatRooms?.items || []
     const chatRoomIndex = chatRooms.findIndex(item => {
         const userFound = item.chatRoom.members.items.find(el =>{ 
             return el.user.id === contactID
@@ -25,7 +25,7 @@ const myChatRooms = /* GraphQL */`
 query GetUser($id: ID!) {
     getUser(id: $id) {
       chatRooms {
-        items {
+        items {                          
           chatRoom {
             members {
               items {

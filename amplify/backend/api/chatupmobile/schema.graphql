@@ -18,7 +18,7 @@ type Message @model @auth(rules: [{allow: public}]) {
   chatRoomID: ID! @index(name: "byChatRoom", sortKeyFields: ["text"])
   chatRoom: ChatRoom! @belongsTo(fields: ["chatRoomID"])
   senderID: ID! @index(name: "byUser", sortKeyFields: ["text"])
-  sender: ChatRoom! @belongsTo(fields: ["senderID"])
+  sender: User! @belongsTo(fields: ["senderID"])
 }
 
 type ChatRoom @model @auth(rules: [{allow: public}]) {
