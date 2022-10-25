@@ -18,7 +18,7 @@ export default function ChatsScreen() {
   return (
       <FlatList
         data={chatRooms}
-        renderItem={({item})=> <ChatListItem chat={item}/>}
+        renderItem={({item})=> <ChatListItem chat={item.chatRoom}/>}
         style={{
           backgroundColor: "white"
         }}

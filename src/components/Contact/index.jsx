@@ -6,6 +6,7 @@ import {useNavigation} from "@react-navigation/native"
 import { API, Auth, graphqlOperation } from 'aws-amplify'
 import { listChatRooms } from '../../graphql/queries'
 import { createChatRoom, createChatRoomUser } from '../../graphql/mutations'
+import { getUsersRoom } from '../../helpers/getUsersRoom'
 dayjs.extend(relativeTime)
 
 
@@ -15,16 +16,13 @@ const Contact = ({
   const navigation = useNavigation()
   const handlePress = async () =>{
     try{
-      // const chatRoom = await API.graphql(graphqlOperation(listChatRooms, {
-      //   filter:{
-      //     userID: {eq: contact.id}
-      //   }
-      // }))
-      // const chatRoomExists = chatRoom?.data?.listChatRooms?.items[0]
-      // if(chatRoomExists){
-      //   navigation.navigate("Chat", {id: chatRoomExists?.id, name: contact.name})
-      // }
-      // else{
+      const chatRoomID = await getUsersRoom(contact.id)
+      
+      if(chatRoomID){
+        navigation.navigate("Chat", {id: chatRoomID, name: contact.name})
+      }
+      else{
+        
         const newChatRoomRawData = await API.graphql(graphqlOperation(createChatRoom, {input:{}}))
         const newChatRoom = newChatRoomRawData?.data?.createChatRoom
         const currentUser = await Auth.currentAuthenticatedUser()
@@ -44,7 +42,7 @@ const Contact = ({
 
       }
 
-    // }
+    }
     catch(err){
       console.log(err)
     }
