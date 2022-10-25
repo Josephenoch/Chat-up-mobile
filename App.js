@@ -5,6 +5,7 @@ import awsmobile from "./src/aws-exports"
 import { withAuthenticator } from 'aws-amplify-react-native/dist/Auth';
 import { useEffect } from 'react';
 import { getUser } from './src/graphql/queries';
+import { createUser } from './src/graphql/mutations';
 
 Amplify.configure({...awsmobile, Analytics:{disabled: true}})
 
@@ -15,7 +16,14 @@ const App = () => {
       const user = await API.graphql(graphqlOperation(getUser, {
         id: currentUser?.attributes?.sub
       }))
-      console.log(user)
+      if(!user?.data?.getUser){
+        await API.graphql(graphqlOperation(createUser,{
+          input:{
+            id: currentUser.attributes.sub,
+            name: currentUser.attributes.phone_number,
+          }
+        }))
+      }
     }
     catch(err){
       console.error(err)

@@ -3,6 +3,9 @@ import React from 'react'
 import dayjs from 'dayjs'
 import relativeTime from "dayjs/plugin/relativeTime"
 import {useNavigation} from "@react-navigation/native"
+import { API, Auth, graphqlOperation } from 'aws-amplify'
+import { listChatRooms } from '../../graphql/queries'
+import { createChatRoom, createChatRoomUser } from '../../graphql/mutations'
 dayjs.extend(relativeTime)
 
 
@@ -10,10 +13,46 @@ const Contact = ({
  contact
 }) => {
   const navigation = useNavigation()
+  const handlePress = async () =>{
+    try{
+      // const chatRoom = await API.graphql(graphqlOperation(listChatRooms, {
+      //   filter:{
+      //     userID: {eq: contact.id}
+      //   }
+      // }))
+      // const chatRoomExists = chatRoom?.data?.listChatRooms?.items[0]
+      // if(chatRoomExists){
+      //   navigation.navigate("Chat", {id: chatRoomExists?.id, name: contact.name})
+      // }
+      // else{
+        const newChatRoomRawData = await API.graphql(graphqlOperation(createChatRoom, {input:{}}))
+        const newChatRoom = newChatRoomRawData?.data?.createChatRoom
+        const currentUser = await Auth.currentAuthenticatedUser()
+        await API.graphql(graphqlOperation(createChatRoomUser, {
+          input:{
+            chatRoomID: newChatRoom?.id,
+            userID: contact.id
+          }
+        }))
+        await API.graphql(graphqlOperation(createChatRoomUser, {
+          input:{
+            chatRoomID: newChatRoom?.id,
+            userID: currentUser?.attributes?.sub
+          }
+        }))
+        navigation.navigate("Chat", {id: newChatRoom?.id, name: contact.name})
+
+      }
+
+    // }
+    catch(err){
+      console.log(err)
+    }
+  }
   return (
     <Pressable
       style={styles.rootContainer}
-      onPress={()=>navigation.navigate("Chat", {id: contact.id, name: contact.name})}
+      onPress={handlePress}
     >
       <Image source={{
         uri: contact?.image,
